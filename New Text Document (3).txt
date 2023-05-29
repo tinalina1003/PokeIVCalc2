@@ -1,0 +1,22 @@
+user input how many default max IVs are there
+
+do you have destiny knot
+
+input current IVs
+
+create array of (31, 31, 31, 31, 31, 31)
+while my stats is that array, randomly generate number between 0-31
+
+randomize number between 0-31 and replace values depending if you have destiny knot or not
+if the counter for # of 31's are the same, check each index to see if it's greater than the parent's ie) 31 > 0.. so replace with that
+
+do this until you get 6 IVs
+
+print output of how many eggs you need to hatch
+
+add some more attributes
+gender
+shiny
+etc
+
+make it output the object with it's attributes

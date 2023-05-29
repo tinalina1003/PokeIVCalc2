@@ -1,0 +1,10 @@
+import numpy as np
+
+data = np.loadtxt('E:/Python Projects/Pokemon IV Calculator/testStats.txt')
+
+stat1 = data[:, 0]
+stat2 = data[:, 1]
+
+print(stat2)
+print(len(stat2))
+print(type(stat2))

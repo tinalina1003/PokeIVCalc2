@@ -1,0 +1,134 @@
+
+
+"""
+elements [0, 2, 3, 4, 5] passed down
+
+list1 = [31, 29, 31, 31, 31, 31]
+list2 = [31, 0, 31, 31, 31, 31]
+list3 = [31, 29, 31, 31, 31, 31]
+
+list1Count = 0
+list2Count = 0
+list3Count = 0
+
+
+def thirtyoneCount(list):
+    count = 0
+    for i in list:
+        if i == 31:
+            count += 1
+    #print(count)
+    return count
+
+thirtyoneCount(list1)
+thirtyoneCount(list2)
+thirtyoneCount(list3)
+
+if thirtyoneCount(list3) == thirtyoneCount(list2) and thirtyoneCount(list1):
+#    print(thirtyoneCount(list3))
+    for i in range(len(list3)):
+        if list1[i] != 0 and list2[i] != 0:
+            print("No replacements")
+            break
+        if list3[i] > list2[i] or list3[i] > list1[i]:
+            print(i)
+            print(list3[i])
+            lowerNum = min(list1[i], list2[i])
+            if lowerNum == list1[i]:
+                list1 = list3
+                print("Replaced first pokemon")
+                break
+            else:
+                list2 = list3
+                print("Replaced second pokemon")
+                break
+            
+
+print(list1)
+print(list2)
+
+
+
+list1 = [0, 31, 31, 31, 31, 31]
+list2 = [31, 26, 31, 31, 31, 31]
+list3 = [26, 31, 31, 31, 31, 31]
+
+if list3[i] > list2[i] or list3[i] > list1[i]: this one checks True/False or True/False.... if either of them are  True, it will be True
+    26 > 31 or 26 > 0: This is true because 26 > 0... so it will execute
+
+
+if list3[i] > list2[i] or list1[i]: this checks if list3's ith number is greater than list2's ith number or list1's ith number and if it's bigger than one of them, it'll be true
+    26 > 31 or 0: This is also true because 26 > 0
+
+"""
+import  random
+import numpy as np
+
+DK = 5
+
+ivList1 = [1, 2, 3, 4, 5, 6]
+ivList2 = [31, 31, 29, 31, 31, 31]
+ivList3 = [0, 0, 0, 0, 0, 0]
+perfectList = [31,31,31,31,31,31]
+
+while ivList1 != perfectList and ivList2 != perfectList:
+    # choose 3 random numbers between 1 and 6 (but elements 0 to 5)
+    selectedIV = np.sort(random.sample(range(6), 3 if DK == "n" else 5)).tolist() # 3 if default, 5 with destiny knot
+    notSelectedIV = np.sort(list(set(range(6)) - set(selectedIV))) # this gets the list of notSelectedIV's indices by the ones that are not in selectedIV
+
+    print("Elements", selectedIV, "are passed down to offspring") # sort to make it easier to look at elements
+    """ivList3 = [ random.choice((ivList1[selectedIV[0]], ivList2[selectedIV[0]])), 
+                random.choice((ivList1[selectedIV[1]], ivList2[selectedIV[1]])),
+                random.choice((ivList1[selectedIV[2]], ivList2[selectedIV[2]])),
+                random.choice((ivList1[selectedIV[3]], ivList2[selectedIV[3]])),
+                random.choice((ivList1[selectedIV[4]], ivList2[selectedIV[4]])),
+                 
+                ]""" # pokemon 3 array
+
+
+    for j, val in enumerate(selectedIV):
+        ivList3[val] = random.choice((ivList1[val],ivList2[val]))
+        if ivList3[val] == ivList1[val]:
+            print("---------------------")
+            print("Chosen from list 1")
+        else:
+            print("---------------------")
+            print("Chosen from list 2")
+        print("Replaced stat", val+1, "with", ivList3[val])
+    
+    for k, notVal in enumerate(notSelectedIV):
+        ivList3[notVal] = random.randint(0, 31)
+        print("Randomized number is", ivList3[notVal])
+
+    print(ivList1)  
+    print(ivList2)
+    print(ivList3)  
+ 
+
+"""
+    # gotta make this at the same time as the list
+    for i, iv in enumerate(ivList3):
+        if i in selectedIV:
+            if iv == ivList1[selectedIV.index(i)]:
+                print(f"IV {i+1}: {iv} (from ivList1)")
+            else:
+                print(f"IV {i+1}: {iv} (from ivList2)")
+        else:
+            print(f"IV {i+1}: {iv}")
+
+    print(notSelectedIV)
+    print(len(notSelectedIV))
+    print("First pokemon's stats are ", ivList1)
+    print("Second pokemon's stats are ", ivList2)
+    print("The child pokemon's stats are ", ivList3)
+    break
+
+
+
+selectedIV = [0, 1, 2, 3, 5]
+ivList3 = [ivList1[selectedIV[0]], ivList1[selectedIV[1]], ivList1[selectedIV[2]],ivList2[selectedIV[0]], ivList2[selectedIV[1]], ivList2[selectedIV[2]]]
+ivList3 = [ivList1[0]             , ivList1[1]             , ivList1[2]             ,ivList2[0]            , ivList2[1]            , ivList2[2]            ]
+ivList3 = [31, 29, 31, 31, 0, 31]
+
+
+"""
